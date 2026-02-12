@@ -94,19 +94,56 @@ class SchematicIoService:
         elements_js = json.dumps(cytoscape_elements, ensure_ascii=False)
 
         html_block = (
-            f'<div id="schematic-graph" style="width: 100%; height: 600px;"></div>'
+            f'<div id="schematic-graph" style="width: 100%; height: 400px; background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 40px 40px; background-color: #0A0A1F;"></div>'
             f'<script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>'
             f'<script>'
             f'const cy = cytoscape({{'
             f'container: document.getElementById("schematic-graph"),'
             f'elements: {elements_js},'
             f'style: ['
-            f'{{selector: "node", style: {{content: "data(label)", "text-valign": "center", color: "#fff", "background-color": "#0074D9", width: "label", height: "label", padding: "10px"}}}},'
-            f'{{selector: "edge", style: {{width: 3, "line-color": "#ccc", "target-arrow-color": "#ccc", "target-arrow-shape": "triangle", "curve-style": "bezier"}}}}'
+
+            # ---- NODE STYLE ----
+            f'{{selector: "node", style: {{'
+            f'content: "data(label)",'
+            f'"text-valign": "center",'
+            f'"text-halign": "center",'
+            f'color: "#000000",'
+            f'"font-size": "25px",'
+            f'"font-weight": "600",'
+            f'"text-wrap": "ellipsis",'
+            f'"text-max-width": "180px",'
+            f'"background-color": "#F4A261",'
+            f'"border-width": 2,'
+            f'"border-color": "#ffffff",'
+            f'shape: "round-rectangle",'
+            f'width: "250px",'
+            f'height: "80px",'
+            f'padding: "12px"'
+            f'}}}},'
+
+            # ---- EDGE STYLE ----
+            f'{{selector: "edge", style: {{'
+            f'width: 5,'
+            f'"line-color": "#ffffff",'
+            f'"line-style": "dashed",'
+            f'"target-arrow-color": "#ffffff",'
+            f'"target-arrow-shape": "triangle",'
+            f'"curve-style": "bezier"'
+            f'}}}}'
+
             f'],'
-            f'layout: {{name: "breadthfirst", directed: true, padding: 10}}'
+
+            # ---- LAYOUT ----
+            f'layout: {{'
+            f'name: "breadthfirst",'
+            f'directed: true,'
+            f'padding: 20,'
+            f'spacingFactor: 0.7'  # делает граф компактнее (ребра короче)
+            f'}}'
+
             f'}});'
             f'</script>'
+
         )
 
         return html_block
