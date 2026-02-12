@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --neon-cyan: #00F5FF;
+  --neon-purple: #C026D3;
+  --neon-pink: #FF00FF;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -10px rgb(0 0 0 / 0.3);
+}
+
+/* Grid background */
+.bg-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Neon glow */
+.neon-cyan {
+  text-shadow: 0 0 20px #00F5FF, 0 0 40px #00F5FF;
+}
+
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%,100%{opacity:0.6;}
+  50%{opacity:1;}
+}
+.pulse-glow{
+  animation: pulse-glow 4s infinite ease-in-out;
+}
+
+/* Floating shapes */
+#background-canvas{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-10;
+}

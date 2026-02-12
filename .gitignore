@@ -15,5 +15,4 @@ wheels/
 *.sqlite3
 .vscode/
 .idea/
-*.dockerignore
 *.DS_Store
