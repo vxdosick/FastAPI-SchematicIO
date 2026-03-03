@@ -138,7 +138,7 @@ class SchematicIoService:
             f'name: "breadthfirst",'
             f'directed: true,'
             f'padding: 20,'
-            f'spacingFactor: 0.7'  # делает граф компактнее (ребра короче)
+            f'spacingFactor: 0.7'
             f'}}'
 
             f'}});'
