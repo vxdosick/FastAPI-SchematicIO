@@ -42,48 +42,34 @@
       </h1>
       <p class="text-lg md:text-xl text-gray-400 max-w-3xl mb-10">AI parses your text into concepts and relationships. Cytoscape.js creates an interactive graph to reveal hidden connections.</p>
       <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-12">
-        <button onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})" class="px-8 py-3 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-3xl font-semibold text-lg hover:scale-105 transition-all shadow-2xl shadow-purple-500/50">Create Graph Now</button>
-        <button onclick="loadExample()" class="px-6 py-3 border border-white/30 rounded-3xl hover:bg-white/5 transition-all">View Example</button>
+        <button onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})" class="px-8 py-3 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-3xl font-semibold text-lg hover:scale-105 transition-all shadow-2xl shadow-purple-500/50">View graph</button>
       </div>
       <p class="text-gray-500 text-sm">Used by researchers, students, and content creators • 99% concept extraction accuracy</p>
     </section>
 
     <!-- Demo Section -->
-    <!-- Demo Section -->
 <section id="demo" class="py-16 border-t border-white/10 px-4 md:px-8">
   <div class="max-w-screen-2xl mx-auto">
-    <h2 class="text-4xl font-bold text-center mb-4">Try It Yourself</h2>
+    <h2 class="text-4xl font-bold text-center mb-4">Your graph is ready!</h2>
     <p class="text-center text-gray-400 text-lg mb-12">
-      Paste your article, and AI does the rest
+      You can copy the source code of the graph and customise it to suit your needs ❤️
     </p>
 
-    <div class="grid grid-cols-1 lg:grid-cols-1 gap-10 max-w-5xl mx-auto">
-      <!-- Input -->
-      <div class="glass-card p-6 rounded-3xl w-full mx-auto">
+    <div class="flex justify-center mb-5">
+        <a href="/" class="px-8 py-3 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-3xl font-semibold text-lg hover:scale-105 transition-all shadow-2xl shadow-purple-500/50">Create another graph</a>
+    </div>
+
+      <!-- Graph Output -->
+      {% if html_block %}
+      <div id="graph-output" class="glass-card p-6 rounded-3xl flex flex-col mt-8 max-w-[1024px] mx-auto">
         <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
-          <span class="text-cyan-400">①</span> Paste your article
+          <span class="text-purple-400">②</span> Interactive Graph
         </h3>
-        <form id="graph-form" method="post" action="/api/schematic_io">
-          <textarea
-            name="text"
-            id="input-text"
-            rows="12"
-            class="w-full bg-[#0A0A1F] border border-white/10 rounded-2xl p-4 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 resize-none font-light"
-            placeholder="Paste your article here..."
-          ></textarea>
-          <div class="mt-4 flex gap-4">
-            <button
-              type="submit"
-              id="generate-btn"
-              class="flex-1 py-3 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-2xl font-semibold hover:brightness-110 flex items-center justify-center gap-2"
-            >
-              <span>Generate Graph</span>
-              <span id="btn-spinner" class="hidden w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-            </button>
-            <button type="button" onclick="loadExample()" class="px-4 py-3 border border-white/20 rounded-2xl hover:bg-white/5 transition-all">Example</button>
-          </div>
-        </form>
+        {{ html_block|safe }}
+        <button id="copy-graph" class="mt-4 px-4 py-2 w-fit bg-purple-600 hover:bg-purple-700 rounded-xl font-medium text-white transition-all">Copy Graph Block</button>
       </div>
+      {% endif %}
+
     </div>
   </div>
 </section>
@@ -97,19 +83,19 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="glass-card p-4 rounded-2xl flex flex-col items-center gap-5">
             <p class="text-xl">Fast & Interactive</p>
-            <img class="max-w-[120px]" src="static/images/1.png" alt="Fast & Interactive">
+            <img class="max-w-[120px]" src="/static/images/1.png" alt="Fast & Interactive">
           </div>
           <div class="glass-card p-4 rounded-2xl flex flex-col items-center gap-5">
             <p class="text-xl">Highly Customizable</p>
-            <img class="max-w-[120px]" src="static/images/2.png" alt="Highly Customizable">
+            <img class="max-w-[120px]" src="/static/images/2.png" alt="Highly Customizable">
           </div>
           <div class="glass-card p-4 rounded-2xl flex flex-col items-center gap-5">
             <p class="text-xl">Science-Friendly</p>
-            <img class="max-w-[120px]" src="static/images/3.png" alt="Science-Friendly">
+            <img class="max-w-[120px]" src="/static/images/3.png" alt="Science-Friendly">
           </div>
           <div class="glass-card p-4 rounded-2xl flex flex-col items-center gap-5">
             <p class="text-xl">Reusability</p>
-            <img class="max-w-[120px]" src="static/images/4.png" alt="Reusability">
+            <img class="max-w-[120px]" src="/static/images/4.png" alt="Reusability">
           </div>
         </div>
       </div>
