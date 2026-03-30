@@ -8,7 +8,6 @@ client = OpenAI(
     api_key=OPENROUTER_API_KEY,
 )
 
-
 class SchematicIoService:
     @staticmethod
     def ai_request(input_text: str) -> dict:
