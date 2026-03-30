@@ -4,7 +4,7 @@ import os
 
 load_dotenv()
 
-# ENV variables
+# Variables
 ROOT_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR = ROOT_DIR / "static"
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
