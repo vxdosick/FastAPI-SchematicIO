@@ -125,3 +125,27 @@ function loadExample() {
     demoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
+
+// Copy Text function
+async function copyText(button) {
+    const container = button.closest('.copy-container');
+    
+    const textElement = container.querySelector('.text-to-copy');
+    
+    const content = textElement.getAttribute('data-copy-value') || textElement.innerText;
+
+    try {
+        await navigator.clipboard.writeText(content);
+        
+        const originalText = button.innerHTML;
+        button.innerHTML = "✓";
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove('copied');
+        }, 2000);
+    } catch (err) {
+        console.error('Failed to copy:', err);
+    }
+}

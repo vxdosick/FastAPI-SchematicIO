@@ -24,3 +24,6 @@ class Elements(BaseModel):
 
 class SchematicResponse(BaseModel):
     elements: Elements
+
+class SchematicRequest(BaseModel):
+    text: str

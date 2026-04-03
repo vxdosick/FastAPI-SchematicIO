@@ -11,6 +11,7 @@ import ngrok
 
 from core.config import STATIC_DIR, NGROK_AUTHTOKEN
 from src.api.schematic_io import router
+from src.api.schematic_io_api import router as api_router
 
 # Logging
 logging.basicConfig(level=logging.INFO)
@@ -46,6 +47,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="SchematicIO", lifespan=lifespan)
 
 app.include_router(router)
+app.include_router(api_router)
 
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 templates = Jinja2Templates(directory=str(STATIC_DIR / "templates"))

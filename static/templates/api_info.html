@@ -105,10 +105,10 @@
           <div class="p-6 rounded-3xl">
             <p class="text-gray-400 mb-4">A POST request to this endpoint.</p>
             <div
-              class="bg-[#1e1e3a] gap-5 p-4 rounded-2xl mb-3 flex items-center justify-between"
+              class="copy-container bg-[#1e1e3a] gap-5 p-4 rounded-2xl mb-3 flex items-center justify-between"
             >
-            <pre class="text-lg font-semibold overflow-auto"><code>POST /api/schematic_io</code></pre>
-              <button>
+            <pre class="text-to-copy text-lg font-semibold overflow-auto"><code>POST /api/schematic_io_api</code></pre>
+              <button onclick="copyText(this)">
                 <img class="w-5" src="/static/images/copy.png" alt="copy" />
               </button>
             </div>
@@ -200,16 +200,20 @@
       <p class="text-gray-400 mb-4 max-w-3xl mx-auto">
         The response will be an HTML string you can embed in your page.
       </p>
-      <div
-        class="bg-[#1e1e3a] gap-5 p-4 p-6 rounded-3xl max-w-3xl mx-auto flex items-center justify-between"
+      <div class="p-6">
+        <div
+        class="copy-container bg-[#1e1e3a] gap-5 p-4 p-6 rounded-3xl max-w-5xl mx-auto flex items-center justify-between"
       >
         <pre
-          class="rounded-2xl overflow-auto text-left"
-        ><code>curl -X POST "http://your-ngrok-url/api/schematic_io" \
-  -F "text=Your article text here"</code></pre>
-        <button>
+          class="rounded-2xl overflow-auto text-left py-4"
+        ><code class="text-to-copy">curl -X 'POST' \
+  'https://valorie-nonpsychiatric-gwendolyn.ngrok-free.dev/api/schematic_io_api' \
+  -H 'Content-Type: application/json' \
+  -d '{"text": "Python is a programming language used for web development and AI."}'</code></pre>
+        <button onclick="copyText(this)">
           <img class="w-5" src="/static/images/copy.png" alt="copy" />
         </button>
+      </div>
       </div>
     </section>
 

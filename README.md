@@ -24,3 +24,10 @@ uv sync
 ```bash
 uvicorn src.main:app --reload
 ```
+3. API request
+```bash
+curl -X 'POST' \
+  'https://valorie-nonpsychiatric-gwendolyn.ngrok-free.dev/api/schematic_io_api' \
+  -H 'Content-Type: application/json' \
+  -d '{"text": "Python is a programming language used for web development and AI."}'
+```

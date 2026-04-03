@@ -16,19 +16,19 @@ class SchematicIoService:
             Instructions:
             1. Split the text into clear logical sections (main ideas or thematic blocks).
             2. For each section:
-               - Create a short, meaningful label (2–6 words).
-               - Preserve the core idea in the label.
+                - Create a short, meaningful label (2–6 words).
+                - Preserve the core idea in the label.
             3. Create graph elements in Cytoscape.js format:
-               - Nodes must contain: id and label.
-               - Edges must contain: id, source, and target.
+                - Nodes must contain: id and label.
+                - Edges must contain: id, source, and target.
             4. The graph must represent logical relationships (hierarchy, cause-effect, dependency, thematic expansion).
             5. Do NOT mix node and edge fields.
-               - Nodes must NOT contain source or target.
-               - Edges must NOT contain label unless it describes the relationship.
+                - Nodes must NOT contain source or target.
+                - Edges must NOT contain label unless it describes the relationship.
             6. Do NOT include "source" or "target" fields in nodes.  
-               - Edges must be separate elements with proper "source" and "target" fields.  
-               - Each element in the "elements" array must be either a node or an edge, never mix the two.  
-               - Ensure the graph is fully connected with edges representing logical relationships.
+                - Edges must be separate elements with proper "source" and "target" fields.  
+                - Each element in the "elements" array must be either a node or an edge, never mix the two.  
+                - Ensure the graph is fully connected with edges representing logical relationships.
 
             Return a coherent, logically connected directed graph.
 
@@ -83,7 +83,7 @@ class SchematicIoService:
         )
         
         return json.loads(completion.choices[0].message.content)
-     
+
     @staticmethod
     def build_schema(elements_dict: dict) -> dict:
         nodes = [{"data": n} for n in elements_dict["elements"]["nodes"]]
