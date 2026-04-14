@@ -140,9 +140,6 @@ button {
   p {
     font-size: 1rem !important;
   }
-  .glass-card {
-    max-width: 300px;
-  }
 }
 
 @media (max-width: 400px) {

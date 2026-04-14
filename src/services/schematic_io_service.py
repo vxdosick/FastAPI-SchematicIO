@@ -145,4 +145,4 @@ class SchematicIoService:
 
         )
 
-        return html_block
+        return {"html_block": html_block}
