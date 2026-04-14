@@ -103,30 +103,62 @@
         </p>
         <div class="max-w-5xl mx-auto">
           <div class="p-6 rounded-3xl">
-            <p class="text-gray-400 mb-4">A POST request to this endpoint.</p>
+            <p class="text-gray-400 text-lg mb-4">1. Request to receive the HTML block containing the diagram directly.</p>
             <div
               class="copy-container bg-[#1e1e3a] gap-5 p-4 rounded-2xl mb-3 flex items-center justify-between"
             >
-            <pre class="text-to-copy text-lg font-semibold overflow-auto"><code>POST /api/schematic_io_api</code></pre>
+            <pre class="text-to-copy text-lg font-semibold overflow-auto"><code>POST /api/schematic_io_block</code></pre>
               <button onclick="copyText(this)">
                 <img class="w-5" src="/static/images/copy.png" alt="copy" />
               </button>
             </div>
             <p class="text-gray-400 mb-4">
-              Generate a knowledge graph from input text and return an HTML
+              - generate a knowledge graph from input text and return an HTML
               block for embedding.
             </p>
             <div class="mb-4">
               <h4 class="font-medium mb-2">Request (Form Data)</h4>
               <pre
-                class="bg-[#1e1e3a] p-4 rounded-2xl overflow-auto"
-              ><code>text: string (required) - The input text to analyze.</code></pre>
+                class="bg-[#1e1e3a] p-4 rounded-2xl overflow-auto mb-3"
+              ><code>text: string</code></pre>
+              <p class="text-gray-400 mb-4">
+              - this is a required field; please enter the title of the article for which you wish to create a diagram.
+            </p>
             </div>
             <div>
               <h4 class="font-medium mb-2">Response</h4>
               <p class="text-gray-400">
                 HTMLResponse - An HTML string containing the Cytoscape.js graph
                 embed.
+              </p>
+            </div>
+          </div>
+          <div class="p-6 rounded-3xl">
+            <p class="text-gray-400 text-lg mb-4">2. A request to retrieve the elements needed to create a block directly within Cytoscape.js.</p>
+            <div
+              class="copy-container bg-[#1e1e3a] gap-5 p-4 rounded-2xl mb-3 flex items-center justify-between"
+            >
+            <pre class="text-to-copy text-lg font-semibold overflow-auto"><code>POST /api/schematic_io_elements</code></pre>
+              <button onclick="copyText(this)">
+                <img class="w-5" src="/static/images/copy.png" alt="copy" />
+              </button>
+            </div>
+            <p class="text-gray-400 mb-4">
+              - generation of key elements for creating a diagram in Cytoscape.js.
+            </p>
+            <div class="mb-4">
+              <h4 class="font-medium mb-2">Request (Form Data)</h4>
+              <pre
+                class="bg-[#1e1e3a] p-4 rounded-2xl overflow-auto mb-3"
+              ><code>text: string</code></pre>
+              <p class="text-gray-400 mb-4">
+              - this is a required field; please enter the title of the article for which you wish to create an elements of a diagram.
+            </p>
+            </div>
+            <div>
+              <h4 class="font-medium mb-2">Response</h4>
+              <p class="text-gray-400">
+                JSONResponse - A JSON object containing all the elements.
               </p>
             </div>
           </div>
@@ -197,22 +229,43 @@
         <h2 class="text-3xl font-bold mb-4">Usage Example</h2>
         <p class="text-gray-400 mb-6">How to call the API using curl.</p>
       </div>
-      <p class="text-gray-400 mb-4 max-w-3xl mx-auto">
-        The response will be an HTML string you can embed in your page.
+      <div class="">
+        <p class="text-gray-400 max-w-3xl mx-auto text-center mb-2">
+        1. The response will be an HTML string you can embed in your page.
       </p>
-      <div class="p-6">
+      <div class="">
         <div
-        class="copy-container bg-[#1e1e3a] gap-5 p-4 p-6 rounded-3xl max-w-5xl mx-auto flex items-center justify-between"
+        class="mb-10 copy-container bg-[#1e1e3a] gap-5 p-4 rounded-3xl max-w-5xl mx-auto flex items-center justify-between"
       >
         <pre
           class="rounded-2xl overflow-auto text-left py-4"
         ><code class="text-to-copy">curl -X 'POST' \
-  'https://valorie-nonpsychiatric-gwendolyn.ngrok-free.dev/api/schematic_io_api' \
+  'https://valorie-nonpsychiatric-gwendolyn.ngrok-free.dev/api/schematic_io_block' \
   -H 'Content-Type: application/json' \
   -d '{"text": "Python is a programming language used for web development and AI."}'</code></pre>
         <button onclick="copyText(this)">
           <img class="w-5" src="/static/images/copy.png" alt="copy" />
         </button>
+      </div>
+      </div>
+      <div>
+        <p class="text-gray-400 max-w-3xl mx-auto text-center mb-2">
+        2. The response will be an JSON object you can use in Cytoscape.js.
+      </p>
+      <div class="">
+        <div
+        class="copy-container bg-[#1e1e3a] gap-5 p-4 rounded-3xl max-w-5xl mx-auto flex items-center justify-between"
+      >
+        <pre
+          class="rounded-2xl overflow-auto text-left py-4"
+        ><code class="text-to-copy">curl -X 'POST' \
+  'https://valorie-nonpsychiatric-gwendolyn.ngrok-free.dev/api/schematic_io_elements' \
+  -H 'Content-Type: application/json' \
+  -d '{"text": "Python is a programming language used for web development and AI."}'</code></pre>
+        <button onclick="copyText(this)">
+          <img class="w-5" src="/static/images/copy.png" alt="copy" />
+        </button>
+      </div>
       </div>
       </div>
     </section>
